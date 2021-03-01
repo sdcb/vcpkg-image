@@ -3,7 +3,7 @@ FROM alpine:latest
 LABEL description="A small Linux image with gcc-10 and vcpkg"
 
 # Install build dependencies
-RUN apk add --no-cache cmake gcc git g++ curl make ninja
+RUN apk update && apk add --no-cache cmake gcc git g++ curl make ninja
 
 # Setup vcpkg in /vcpkg
 RUN git clone https://github.com/Microsoft/vcpkg.git \
