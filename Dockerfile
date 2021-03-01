@@ -1,27 +1,12 @@
-FROM alpine:edge
+FROM alpine:latest AS build-image
 
 LABEL description="A small Linux image with a modern compiler and vcpkg"
 
-RUN apk update && apk add \
-    build-base \
-    gcc \
-    abuild \
-    binutils \
-    binutils-doc \
-    gcc-doc \
-    cmake \
-    cmake-doc \
-    extra-cmake-modules \
-    extra-cmake-modules-doc \
-    ccache \
-    ccache-doc \
-    git \
-    curl \
-    zip \
-    unzip \
-    tar \
-    libc6-compat \
-    ninja \
-    && cd opt \
-    && git clone https://github.com/microsoft/vcpkg.git \
-    && cd vcpkg
+# Install build dependencies
+RUN apk add --no-cache cmake gcc git g++ curl make ninja
+
+# Setup vcpkg in /vcpkg
+RUN git clone https://github.com/Microsoft/vcpkg.git \
+    && cd vcpkg \
+    && ./bootstrap-vcpkg.sh -useSystemBinaries \
+    && ./vcpkg integrate install
