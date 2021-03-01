@@ -1,6 +1,6 @@
-FROM alpine:latest AS build-image
+FROM alpine:latest
 
-LABEL description="A small Linux image with a modern compiler and vcpkg"
+LABEL description="A small Linux image with gcc-10 and vcpkg"
 
 # Install build dependencies
 RUN apk add --no-cache cmake gcc git g++ curl make ninja
@@ -10,3 +10,6 @@ RUN git clone https://github.com/Microsoft/vcpkg.git \
     && cd vcpkg \
     && ./bootstrap-vcpkg.sh -useSystemBinaries \
     && ./vcpkg integrate install
+
+ENV PATH=/vcpkg:$PATH
+ENV VCPKG_ROOT=/vcpkg
