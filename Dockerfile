@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tar \
     unzip \
     wget \
+    zip \
     --fix-missing \
     && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10 \
     && apt-get upgrade -y \
