@@ -1,14 +1,17 @@
 # vcpkg-image
-A small [Alpine] or [Ubuntu] Linux image with [gcc-10] and [vcpkg].
+A small [Alpine] or [Ubuntu] Linux image with [gcc-10] and [vcpkg], plus prerequisites to install
+packages such as `gmp`, `boost`, and `cgal`.
 
-`vcpkg` is located in `/vcpkg`, and user-wide integration (`vcpkg integrate install`) has been applied.
-`vcpkg` is also required to use system-installed [CMake] and [Ninja] rather than
-downloading it's own copies.
+[vcpkg] is located in `/vcpkg` (available via `$VCPKG_ROOT`), and user-wide integration (`vcpkg integrate install`)
+has been applied.
+[vcpkg] is also required to use system-installed [CMake] and [Ninja] rather than downloading it's own copies.
+
+As `gmp` requires [CMake] 3.17 or later, the latest stable version of [CMake] is downloaded and installed.
 
 [CMake] projects should use:
 
 ```
-"-DCMAKE_TOOLCHAIN_FILE=/vcpkg/scripts/buildsystems/vcpkg.cmake"
+"-DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake"
 ```
 
 For background see [Using multi-stage containers for C++ development][1].

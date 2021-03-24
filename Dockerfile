@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     autoconf-archive \
     build-essential \
     ca-certificates \
+    ccache \
     cmake \
     curl \
     g++-10 \
