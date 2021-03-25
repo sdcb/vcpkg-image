@@ -60,7 +60,9 @@ RUN cd /tmp \
 RUN git clone https://github.com/Microsoft/vcpkg.git \
     && cd vcpkg \
     && ./bootstrap-vcpkg.sh -useSystemBinaries \
-    && ./vcpkg integrate install
+    && ./vcpkg integrate install \
+    && cd / \
+    && chmod -R 777 vcpkg
 
 ENV PATH=/vcpkg:$PATH
 ENV VCPKG_ROOT=/vcpkg
