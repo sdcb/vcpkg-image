@@ -6,12 +6,23 @@ packages such as `gmp`, `boost`, and `cgal`.
 has been applied.
 [vcpkg] is also required to use system-installed [CMake] and [Ninja] rather than downloading it's own copies.
 
-As `gmp` requires [CMake] 3.17 or later, the latest stable version of [CMake] is downloaded and installed.
+As [vcpkg] requires [CMake] 3.21 or later, the latest stable version of [CMake] is downloaded and installed.
 
 [CMake] projects should use:
 
 ```
 "-DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake"
+```
+
+## Building
+
+```
+docker build -t vcpkg-image .
+```
+
+## Running
+```
+docker run -it --name vcpkg vcpkg-image
 ```
 
 For background see [Using multi-stage containers for C++ development][1].

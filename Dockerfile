@@ -41,11 +41,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV CXX="g++-10"
 ENV CC="gcc-10"
 
-# The gmp package requires CMake 3.17 or later, so build newer CMake
+# vcpkg requires CMake 3.21 or later, so build newer CMake
 RUN cd /tmp \
-    && wget https://github.com/Kitware/CMake/releases/download/v3.19.6/cmake-3.19.6.tar.gz \
-    && tar -xf cmake-3.19.6.tar.gz \
-    && cd cmake-3.19.6 \
+    && wget https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3.tar.gz \
+    && tar -xf cmake-3.21.3.tar.gz \
+    && cd cmake-3.21.3 \
     && cmake . \
     && make \
     && make install \
@@ -54,8 +54,8 @@ RUN cd /tmp \
     && \cp /usr/local/bin/ctest /usr/bin/ctest \
     && which cmake \
     && cmake --version \
-    && rm -rf /tmp/cmake-3.19.6 \
-    && rm /tmp/cmake-3.19.6.tar.gz
+    && rm -rf /tmp/cmake-3.21.3 \
+    && rm /tmp/cmake-3.21.3.tar.gz
 
 # Setup vcpkg in /vcpkg
 RUN git clone https://github.com/Microsoft/vcpkg.git \
