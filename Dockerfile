@@ -67,4 +67,4 @@ RUN git clone https://github.com/Microsoft/vcpkg.git \
 
 ENV PATH=/vcpkg:$PATH
 ENV VCPKG_ROOT=/vcpkg
-ENV VCPKG_FORCE_SYSTEM_BINARIES=1
+ENV VCPKG_FORCE_SYSTEM_BINARIES=0
