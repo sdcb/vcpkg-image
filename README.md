@@ -1,4 +1,5 @@
 # vcpkg-image
+
 A small [Alpine] or [Ubuntu] Linux image with [gcc-10] and [vcpkg], plus prerequisites to install
 packages such as `gmp`, `boost`, and `cgal`.
 
@@ -10,18 +11,19 @@ As [vcpkg] requires [CMake] 3.21 or later, the latest stable version of [CMake] 
 
 [CMake] projects should use:
 
-```
+```bash
 "-DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake"
 ```
 
 ## Building
 
-```
+```bash
 docker build -t vcpkg-image .
 ```
 
 ## Running
-```
+
+```bash
 docker run -it --name vcpkg vcpkg-image
 ```
 
