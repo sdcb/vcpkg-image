@@ -43,9 +43,9 @@ ENV CC="gcc-10"
 
 # vcpkg requires CMake 3.21 or later, so build newer CMake
 RUN cd /tmp \
-    && wget https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1.tar.gz \
-    && tar -xf cmake-3.22.1.tar.gz \
-    && cd cmake-3.22.1 \
+    && wget https://github.com/Kitware/CMake/releases/download/v3.23.1/cmake-3.23.1.tar.gz \
+    && tar -xf cmake-3.23.1.tar.gz \
+    && cd cmake-3.23.1 \
     && cmake . \
     && make \
     && make install \
@@ -54,8 +54,8 @@ RUN cd /tmp \
     && \cp /usr/local/bin/ctest /usr/bin/ctest \
     && which cmake \
     && cmake --version \
-    && rm -rf /tmp/cmake-3.22.1 \
-    && rm /tmp/cmake-3.22.1.tar.gz
+    && rm -rf /tmp/cmake-3.23.1 \
+    && rm /tmp/cmake-3.23.1.tar.gz
 
 # Setup vcpkg in /vcpkg
 RUN git clone https://github.com/Microsoft/vcpkg.git \
