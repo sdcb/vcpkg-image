@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 LABEL description="A small Linux image with gcc-10 and vcpkg"
 LABEL maintainer="adam@adamgetchell.org"
@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ccache \
     cmake \
     curl \
-    g++-10 \
+    g++-11 \
     git \
     libtool-bin \
     # Required to build CMake
@@ -32,30 +32,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     yasm \
     zip \
     --fix-missing \
-    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10 \
+    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11 \
     && apt-get upgrade -y \
     && rm -rf /var/lib/apt/lists/* \
     && apt clean autoclean && apt autoremove -y \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-ENV CXX="g++-10"
-ENV CC="gcc-10"
-
-# vcpkg requires CMake 3.21 or later, so build newer CMake
-RUN cd /tmp \
-    && wget https://github.com/Kitware/CMake/releases/download/v3.23.1/cmake-3.23.1.tar.gz \
-    && tar -xf cmake-3.23.1.tar.gz \
-    && cd cmake-3.23.1 \
-    && cmake . \
-    && make \
-    && make install \
-    && \cp /usr/local/bin/cmake /usr/bin/cmake \
-    && \cp /usr/local/bin/cpack /usr/bin/cpack \
-    && \cp /usr/local/bin/ctest /usr/bin/ctest \
-    && which cmake \
-    && cmake --version \
-    && rm -rf /tmp/cmake-3.23.1 \
-    && rm /tmp/cmake-3.23.1.tar.gz
+ENV CXX="g++-11"
+ENV CC="gcc-11"
 
 # Setup vcpkg in /vcpkg
 RUN git clone https://github.com/Microsoft/vcpkg.git \
