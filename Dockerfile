@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-LABEL description="A small Linux image with gcc-10 and vcpkg"
+LABEL description="A small Linux image with gcc-11 and vcpkg"
 LABEL maintainer="adam@adamgetchell.org"
 
 ARG DEBIAN_FRONTEND=noninteractive
