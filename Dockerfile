@@ -1,11 +1,11 @@
 FROM ubuntu:22.04
 
 LABEL description="A small Linux image with gcc-11 and vcpkg"
-LABEL maintainer="adam@adamgetchell.org"
+LABEL maintainer="sdflysha@qq.com"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-ENV TZ=America/Los_Angeles
+ENV TZ=Asia/Shanghai
 
 # Install build dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
