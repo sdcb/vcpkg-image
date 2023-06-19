@@ -36,3 +36,9 @@ For background see [Using multi-stage containers for C++ development][1].
 [CMake]:https://cmake.org
 [Ninja]:https://ninja-build.org
 [1]:https://devblogs.microsoft.com/cppblog/using-multi-stage-containers-for-c-development/
+
+## Published latest version
+
+```bash
+docker run -it --rm --name sdcb-vcpkg ghcr.io/sdcb/vcpkg-image:main
+```
